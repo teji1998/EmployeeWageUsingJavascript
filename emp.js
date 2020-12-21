@@ -59,3 +59,13 @@ function totalWages(totalWage, dailywage) {
 }
 //gives final result
 console.log("UC7(a) : Emp wage with reduce : " + employeeDailyWageArray.reduce(totalWages, 0));
+
+//UC7(b): shows the day along with daily wage using array map helper function  
+let dailyCounter = 0;
+function mapDayWithWage(dailyWage){
+    dailyCounter ++;
+    return dailyCounter + " = " + dailyWage;
+}
+let mapDayWithWageArray = employeeDailyWageArray.map(mapDayWithWage);
+console.log("UC7(b) : Daily wage map ");
+console.log(mapDayWithWageArray);
