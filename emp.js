@@ -5,7 +5,7 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const NUMBER_OF_WORKING_DAYS = 20;
-const MAXIMUM_HOURS_IN_MONTH = 100;
+const MAXIMUM_HOURS_IN_MONTH = 160;
 let totalEmployeeHours = 0;
 let totalWorkingDays = 0;
 function gettingWorkingHours(empCheck)
