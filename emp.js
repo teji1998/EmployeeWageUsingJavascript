@@ -45,3 +45,17 @@ let employeeWage = CalculatingWage(totalEmployeeHours);
 console.log("Total days : " + totalWorkingDays + " ,Total hours : " 
         + totalEmployeeHours + " ,Employee wage : " + employeeWage);
 
+//UC7(a):using array to calculate total employee wage for each traversal or reduce method
+let totalEmpWage = 0;
+function Sum(dailyWage) {
+    totalEmpWage += dailyWage;
+}
+//take a element at a time
+employeeDailyWageArray.forEach(Sum);
+console.log("UC7(a) : Total days : " +totalWorkingDays + " Total Hours : " + totalEmployeeHours +
+    " EmpWage : " + totalEmpWage);
+function totalWages(totalWage, dailywage) {
+    return totalWage + dailywage;
+}
+//gives final result
+console.log("UC7(a) : Emp wage with reduce : " + employeeDailyWageArray.reduce(totalWages, 0));
