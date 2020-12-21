@@ -18,8 +18,13 @@ function gettingWorkingHours(empCheck){
     }          
 }
 let empHours = 0;
-let empCheck = Math.floor(Math.random()*10)%3;
-empHours = gettingWorkingHours(empCheck)
+//UC4:calculating employee wage for a month
+const NUMBER_OF_WORKING_DAYS = 20;
+for(let day = 0 ; day < NUMBER_OF_WORKING_DAYS; day ++) 
+{
+    let empCheck =  Math.floor(Math.random() * 10) % 3;
+    empHours += gettingWorkingHours(empCheck);
+}
 let employeeWage = empHours * WAGE_PER_HOUR;
 console.log("Employee wage is " + employeeWage + " for " + empHours + " hours " );
 
