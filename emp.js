@@ -7,11 +7,8 @@ const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const NUMBER_OF_WORKING_DAYS = 20;
 const MAXIMUM_HOURS_IN_MONTH = 160;
-//Variables
-let totalEmployeeHours = 0;
-let totalWorkingDays = 0;
 //function to get the working hours
-function gettingWorkingHours(empCheck)
+function GettingWorkingHours(empCheck)
 {
     switch(empCheck) {
         case IS_FULL_TIME:
@@ -24,14 +21,27 @@ function gettingWorkingHours(empCheck)
             return 0;  
     }          
 }
+//to get the daily employee wage
+function CalculatingWage(empHours)
+{
+    return empHours * WAGE_PER_HOUR;
+}
+//Variables
+let totalEmployeeHours = 0;
+let totalWorkingDays = 0;
+//array to store the daily wage
+let employeeDailyWageArray = new Array();
 //using while loop to meet the maximum hours and total number of days
 while (totalEmployeeHours <= MAXIMUM_HOURS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS){
     totalWorkingDays ++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
-    totalEmployeeHours += gettingWorkingHours(empCheck);
+    let empHours = GettingWorkingHours(empCheck);
+    totalEmployeeHours += empHours;
+    //Adds elements to the array
+    employeeDailyWageArray.push(CalculatingWage(empHours));
 }
 //total employee wage
-let employeeWage = totalEmployeeHours * WAGE_PER_HOUR;
-console.log("Total days : " + totalWorkingDays + ",Total hours : " 
-        + totalEmployeeHours + ",Employee wage : " + employeeWage);
+let employeeWage = CalculatingWage(totalEmployeeHours);
+console.log("Total days : " + totalWorkingDays + " ,Total hours : " 
+        + totalEmployeeHours + " ,Employee wage : " + employeeWage);
 
