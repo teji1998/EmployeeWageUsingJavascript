@@ -66,6 +66,16 @@ function mapDayWithWage(dailyWage){
     dailyCounter ++;
     return dailyCounter + " = " + dailyWage;
 }
+//maps the values into the array
 let mapDayWithWageArray = employeeDailyWageArray.map(mapDayWithWage);
 console.log("UC7(b) : Daily wage map ");
 console.log(mapDayWithWageArray);
+
+//UC7(c) : show days when full time wage of 160 were earned
+function fullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+//returns elements meeting the condition
+let fullDayWageArray = mapDayWithWageArray.filter(fullTimeWage);
+console.log("UC7(c) : Daily wage filtered when full time wage earned : ");
+console.log(fullDayWageArray);
