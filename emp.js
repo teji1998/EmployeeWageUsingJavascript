@@ -1,10 +1,13 @@
 console.log("Welcome to employee wage problem using javascript ");
-//UC3:Function to get working hours
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
+const NUMBER_OF_WORKING_DAYS = 20;
+const MAXIMUM_HOURS_IN_MONTH = 100;
+let totalEmployeeHours = 0;
+let totalWorkingDays = 0;
 function gettingWorkingHours(empCheck)
 {
     switch(empCheck) {
@@ -18,14 +21,12 @@ function gettingWorkingHours(empCheck)
             return 0;  
     }          
 }
-let empHours = 0;
-//UC4:calculating employee wage for a month
-const NUMBER_OF_WORKING_DAYS = 20;
-for(let day = 0 ; day < NUMBER_OF_WORKING_DAYS; day ++) 
-{
-    let empCheck =  Math.floor(Math.random() * 10) % 3;
-    empHours += gettingWorkingHours(empCheck);
+while (totalEmployeeHours <= MAXIMUM_HOURS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS){
+    totalWorkingDays ++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    totalEmployeeHours += gettingWorkingHours(empCheck);
 }
-let employeeWage = empHours * WAGE_PER_HOUR;
-console.log("Employee wage is " + employeeWage + " for " + empHours + " hours " );
+let employeeWage = totalEmployeeHours * WAGE_PER_HOUR;
+console.log("Total days : " + totalWorkingDays + ",Total hours : " 
+        + totalEmployeeHours + ",Employee wage : " + employeeWage);
 
