@@ -1,9 +1,4 @@
 class EmployeePayRollData {
-    //property
-    id;
-    salary;
-    gender;
-    startDate;
 
     //constructor
     constructor(...params) {
@@ -20,7 +15,44 @@ class EmployeePayRollData {
         let nameRegex = new RegExp("^[A-Z]{1}[a-z]{2,}$");
         if(nameRegex.test(name)) this._name = name;
         else throw 'Name is in incorrect format';
-    };
+    }
+
+    get id() { return this._id; }
+    set id(id) {
+        let idRegex = RegExp('^[1-9]{1}[0-9]*$');
+        if (idRegex.test(id)) {
+            this._id = id;
+        } else {
+            throw 'Id is in incorrect formst';
+        }
+    }
+
+    get gender() { return this._gender; }
+    set gender(gender) {
+        let genderRegex = RegExp('^[MFmf]{1}$');
+        if (genderRegex.test(gender)) {
+            this._gender = gender;
+        } else {
+            throw 'Gender is in incorrect format';
+        }
+    }
+
+    get salary() { return this._salary; }
+    set salary(salary) {
+        let salaryRegex = RegExp('^[1-9]{1}[0-9]*$');
+        if (salaryRegex.test(salary)) {
+            this._salary = salary;
+        } else {
+            throw 'Salary is in incorrect format';
+        }
+    }
+
+    get startDate() { return this._startDate; }
+    set startDate(startDate) {
+        if (startDate <= new Date())
+            this._startDate = startDate;
+        else throw "Date is in incorrect format";
+    }
 
     //to return a string
     toString(){
@@ -30,14 +62,29 @@ class EmployeePayRollData {
     }
 }
 
-        let employeePayRollData=new EmployeePayRollData(1,"Mark",30000);
-        console.log(employeePayRollData.toString());
-        try
-        {employeePayRollData.name="Teju";
-        console.log(employeePayRollData.toString());
-        }
-        catch(e){
-            console.log(e);
-        }
-        let newEmployeePayrollData = new EmployeePayRollData(1,"Venky",40000,"M",new Date());
-        console.log(newEmployeePayrollData.toString());
+let newEmployeePayrollData = new EmployeePayRollData(1, "Liam", 30000, 'M', new Date());
+console.log(newEmployeePayrollData.toString());
+try {
+    newEmployeePayrollData.name = "Te";
+    console.log(newEmployeePayrollData.toString());
+} catch (e) {
+    console.error(e);
+}
+try {
+    newEmployeePayrollData.id = -5;
+    console.log(newEmployeePayrollData.toString());
+} catch (e) {
+    console.error(e);
+}
+try {
+    newEmployeePayrollData.salary = -190;
+    console.log(newEmployeePayrollData.toString());
+} catch (e) {
+    console.error(e);
+}
+try {
+    newEmployeePayrollData.startDate = new Date();
+    console.log(newEmployeePayrollData.toString());
+} catch (e) {
+    console.error(e);
+}
