@@ -74,3 +74,10 @@ let partTimeWorkingDays = empDailyHoursAndWageArray
     .map(obj => obj.toString());
 console.log("\nUC11(c) Show part time working days : ");
 console.log(partTimeWorkingDays);
+
+//UC11(d) Show non working days using Map by reducing to string array
+let noWorkingDays = empDailyHoursAndWageArray
+    .filter(obj => obj.dailyHours == 0)
+    .map(obj => obj.toString());
+console.log("UC11(d) Show no working days : ");
+console.log(noWorkingDays); 
