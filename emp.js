@@ -61,5 +61,9 @@ let totalHours = empDailyHoursAndWageArray.filter(obj => obj.dailyHours > 0)
     .reduce((totalHours,obj) => totalHours += obj.dailyHours,0);
 let totalWage = empDailyHoursAndWageArray.filter(obj => obj.dailyWage >0)
     .reduce((totalWage,obj) => totalWage += obj.dailyWage,0);
-console.log("\nUC11(a) Calculate total hours and wage using arrow functions : ");
+console.log("\nUC11(a) : Calculate total hours and wage using arrow functions : ");
 console.log("Total Hours: " + totalHours + "   Total Wage: " + totalWage);
+
+//UC11(b) Show the full working days using foreach
+console.log("\nUC11(b) : Show the full working days");
+empDailyHoursAndWageArray.filter(obj => obj.dailyHours == 8).forEach(obj => process.stdout.write(obj.toString()));
