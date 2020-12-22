@@ -55,4 +55,11 @@ while (totalEmployeeHours <= MAXIMUM_HOURS_IN_MONTH && totalWorkingDays < number
         });
 }
 console.log("UC10 store daily wage, work, hours day in a object: " + empDailyHoursAndWageArray);
-   
+
+//UC11:Using arrow functions
+let totalHours = empDailyHoursAndWageArray.filter(obj => obj.dailyHours > 0)
+    .reduce((totalHours,obj) => totalHours += obj.dailyHours,0);
+let totalWage = empDailyHoursAndWageArray.filter(obj => obj.dailyWage >0)
+    .reduce((totalWage,obj) => totalWage += obj.dailyWage,0);
+console.log("\nUC11(a) Calculate total hours and wage using arrow functions : ");
+console.log("Total Hours: " + totalHours + "   Total Wage: " + totalWage);
