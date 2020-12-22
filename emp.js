@@ -32,8 +32,9 @@ let totalWorkingDays = 0;
 //array to store the daily wage
 let employeeDailyWageArray = new Array();
 //Map to store the daily wage
-let empDailyWageMap=new Map();
-
+let empDailyWageMap = new Map();
+//Map to store the daily hours
+let empDailyHoursMap = new Map();
 //using while loop to meet the maximum hours and total number of days
 while (totalEmployeeHours <= MAXIMUM_HOURS_IN_MONTH && totalWorkingDays < NUMBER_OF_WORKING_DAYS){
     totalWorkingDays ++;
@@ -44,6 +45,8 @@ while (totalEmployeeHours <= MAXIMUM_HOURS_IN_MONTH && totalWorkingDays < NUMBER
     employeeDailyWageArray.push(CalculatingWage(empHours));
     //add key-value in map
     empDailyWageMap.set(totalWorkingDays,CalculatingWage(empHours));
+    //add key-value in map
+    empDailyHoursMap.set(totalWorkingDays, empHours);
     
 }
 //total employee wage
@@ -114,3 +117,26 @@ console.log("UC7(g) : Number of days employee worked : " + employeeDailyWageArra
 //UC8
 //Display the employee daily wage map
 console.log(empDailyWageMap);
+
+//UC9 : Arrow functions
+const findTotal=(totalVal,dailyVal)=>{
+    return totalVal+dailyVal;
+}
+let totalHours=Array.from(empDailyHoursMap.values())
+                .filter(dailyHours=>dailyHours>0)
+                .reduce(findTotal,0);
+let totalSalary=employeeDailyWageArray.filter(dailyWage=>dailyWage>0)
+                .reduce(findTotal,0);
+console.log("UC9A --emp wage with arrow:" + " Total hours:" + totalHours+ " Total Wages:" + totalSalary);           
+//UC 9.b Show the full working days, part working days, no working days
+let nonWorkingDays = new Array();
+let partTimeWorkingDays = new Array();
+let fullTimeWorkingDays = new Array();
+empDailyHoursMap.forEach((value, key, map) => {
+    if (value == 8) fullTimeWorkingDays.push(key);
+    else if (value == 4) partTimeWorkingDays.push(key);
+    else nonWorkingDays.push(key);
+});
+console.log("Full working days: " + fullTimeWorkingDays);
+console.log("Part time working days: " + partTimeWorkingDays);
+console.log("Non working days: " + nonWorkingDays); 
