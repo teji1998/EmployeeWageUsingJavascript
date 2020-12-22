@@ -32,7 +32,12 @@ class EmployeePayRollData {
 
         let employeePayRollData=new EmployeePayRollData(1,"Mark",30000);
         console.log(employeePayRollData.toString());
-        employeePayRollData.name="Teju";
+        try
+        {employeePayRollData.name="Teju";
         console.log(employeePayRollData.toString());
+        }
+        catch(e){
+            console.log(e);
+        }
         let newEmployeePayrollData = new EmployeePayRollData(1,"Venky",40000,"M",new Date());
         console.log(newEmployeePayrollData.toString());
